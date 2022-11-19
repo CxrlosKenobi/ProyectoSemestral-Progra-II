@@ -1,4 +1,4 @@
-    package tarea.app;
+package tarea.app;
 
 /**
  *
