@@ -4,6 +4,7 @@ import tarea.app.views.LoadingScreen;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 /**
  *
  * @author cxrloskenobi
@@ -12,15 +13,7 @@ import java.io.IOException;
 
 public class App {
 
-    public static void main(String[] args) {
-
-        try {
-            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("assets/Military Poster.ttf")));
-        } catch (IOException | FontFormatException e) {
-            // Handle exception
-        }
-
+    public static void main(String[] args) throws FontFormatException, IOException {
         // This loads an UI Style for the app
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
