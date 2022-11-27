@@ -1,15 +1,18 @@
 package tarea.app.views;
 import java.awt.*;
+import javax.swing.*;
 import java.io.InputStream;
 public class LoadingScreen extends javax.swing.JFrame {
-    Font a = loadFuentePersonalizada("miPoster.ttf",0 , 50);
-
+    private Font cFont = loadFuentePersonalizada("miPoster.ttf",0 , 50);
+    private Image avion;
+    private Image misil;
+    private Image objetivo;
     
     public LoadingScreen(String name) {
         super(name);
         setUndecorated(true);
         initComponents();
-        ProgramTitle.setFont(a);
+        ProgramTitle.setFont(cFont);
         setLocationRelativeTo(null);
         setVisible(true);
         playApp();
