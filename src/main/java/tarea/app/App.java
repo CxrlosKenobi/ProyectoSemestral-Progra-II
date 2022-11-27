@@ -1,10 +1,10 @@
 package tarea.app;
 
 import tarea.app.views.LoadingScreen;
+import tarea.app.views.SimulationScreen;
+
 import java.awt.*;
-import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 /**
  *
  * @author cxrloskenobi
@@ -27,7 +27,10 @@ public class App {
             java.util.logging.Logger.getLogger(LoadingScreen.class.getName()).log(java.util.logging.Level.SEVERE, null,
                     ex);
         }
-
-        LoadingScreen loadingScreen = new LoadingScreen("Missile Launch System");
+        Thread t = new Thread(()->{
+            LoadingScreen loadingScreen = new LoadingScreen("Missile Launch System");
+            SimulationScreen simulationScreen = new SimulationScreen();
+        });
+        t.start();
     }
 }
