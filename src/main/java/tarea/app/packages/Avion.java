@@ -1,4 +1,4 @@
-package tarea.app.classes;
+package tarea.app.packages;
 
 import java.awt.*;
 import java.awt.image.*;

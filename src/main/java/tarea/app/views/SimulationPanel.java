@@ -3,7 +3,7 @@ package tarea.app.views;
 import java.awt.*;
 import javax.swing.*;
 
-import tarea.app.classes.*;
+import tarea.app.packages.*;
 
 import java.awt.event.*;
 import java.io.InputStream;
@@ -28,9 +28,9 @@ public class SimulationPanel extends JPanel implements ActionListener {
 
         // g2d.setBackground(new java.awt.Color(255, 248, 191));
         // g2d.drawImage(avion.getImage().getScaledInstance(150, 100, 0), 0, 0, null);
-        g2d.setColor(new Color(0,161,53));
+        g2d.setColor(new Color(0,161,153)); // ground
         g2d.fillRect(0, 500, 1280, 720);
-        g2d.setColor(new Color(212,244,237));
+        g2d.setColor(new Color(212,244,137)); // sky
         g2d.fillRect(0, 0,1280 , 500);
 
         avion.paint(g);
@@ -41,7 +41,6 @@ public class SimulationPanel extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         avion.update();
-        repaint();        
+        repaint();
     }
-   
 }

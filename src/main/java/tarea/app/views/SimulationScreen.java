@@ -1,10 +1,11 @@
 package tarea.app.views;
-import tarea.app.classes.*;
 import javax.swing.JFrame;
+
+import tarea.app.packages.*;
+
 import java.awt.*;
 
 public class SimulationScreen extends JFrame {
-
     public SimulationScreen() {
         super("Destroy your enemies!");
         initComponents();
@@ -15,13 +16,10 @@ public class SimulationScreen extends JFrame {
     }
 
     private void initComponents() {
-        
-
         // Layout and UI related stuff
         ButtonsPanel = new javax.swing.JPanel();
         // GamePanel = new javax.swing.JPanel();
         GamePanel = new SimulationPanel();
-
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 

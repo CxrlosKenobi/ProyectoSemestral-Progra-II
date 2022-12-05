@@ -12,7 +12,6 @@ import java.io.IOException;
  */
 
 public class App {
-
     public static void main(String[] args) throws FontFormatException, IOException {
         // This loads an UI Style for the app
         try {
@@ -27,8 +26,8 @@ public class App {
             java.util.logging.Logger.getLogger(LoadingScreen.class.getName()).log(java.util.logging.Level.SEVERE, null,
                     ex);
         }
-        Thread t = new Thread(()->{
-            LoadingScreen loadingScreen = new LoadingScreen("Missile Launch System");
+        Thread t = new Thread(() -> {
+            // LoadingScreen loadingScreen = new LoadingScreen("Missile Launch System");
             SimulationScreen simulationScreen = new SimulationScreen();
         });
         t.start();

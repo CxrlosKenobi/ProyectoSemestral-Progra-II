@@ -1,4 +1,4 @@
-package tarea.app.classes;
+package tarea.app.packages;
 
 public class Misil {
     
