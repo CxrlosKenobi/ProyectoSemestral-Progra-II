@@ -28,8 +28,9 @@ public class App {
         }
         Thread t = new Thread(() -> {
             // LoadingScreen loadingScreen = new LoadingScreen("Missile Launch System");
-            SimulationScreen simulationScreen = new SimulationScreen();
+            new SimulationScreen();
         });
+
         t.start();
     }
 }

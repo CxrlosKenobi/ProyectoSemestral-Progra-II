@@ -35,5 +35,3 @@ En el panel central habrá un escenario compuesto por avión, blanco y misil, en
 - El blanco, por defecto se mueve a la misma altura randómicamente elegida. Se podría cambiar la dirección del blanco mediante flechas del teclado. 
 
 - El control de disparo se debe realizar mediante el mouse o con teclado o con controles GUI.
-
-
