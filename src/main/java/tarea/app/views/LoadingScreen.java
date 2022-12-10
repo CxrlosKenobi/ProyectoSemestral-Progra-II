@@ -108,7 +108,7 @@ public class LoadingScreen extends javax.swing.JFrame {
     private void playApp() {
         try {
             for (int i = 0; i <= 100; i++) {
-                Thread.sleep(100);
+                Thread.sleep(50);
                 switch (i) {
                     case (10) -> {
                         this.jLabel1.setText("Loading trigonometry...");

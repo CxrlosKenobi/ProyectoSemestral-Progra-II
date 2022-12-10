@@ -4,19 +4,12 @@ import java.awt.*;
 import java.awt.image.*;
 
 import javax.imageio.*;
-import javax.imageio.stream.*;
-
-import javax.swing.*;
 import java.io.*;
 
 public class Avion {
     private int x;
     private int y;
     private double velX;
-    private double angulo;
-    private double velAngulo;
-    private double aceleracion;
-    private double aceleracionAngular;
     private BufferedImage avionSprite;
 
     public Avion() {
@@ -24,19 +17,15 @@ public class Avion {
         this.x = 0;
         this.y = 0;
         this.velX = 5;
-        this.angulo = 0;
-        this.velAngulo = 0;
-        this.aceleracion = 0;
-        this.aceleracionAngular = 0;
     }
-
+    
     public void paint(Graphics g) {
         Graphics2D g2D = (Graphics2D) g;
 
-        g2D.drawImage(this.getImage().getScaledInstance(150, 100, 0), x, 0, null);
-        if (this.x > 1280) {
-            this.x = 0;
-        }
+        g2D.drawImage(this.getImage(), x, 0, null);
+        // if (this.x > 1280) {
+            // this.x = 0;
+        // }
 
     }
 
@@ -45,10 +34,13 @@ public class Avion {
             if (this.velX < 0) {
                 InputStream is = getClass().getResourceAsStream("sprites/planeLeft.png");
                 avionSprite = ImageIO.read(is);
+                avionSprite.getScaledInstance(1500,100, 0);
 
             } else {
                 InputStream is = getClass().getResourceAsStream("sprites/planeRight.png");
                 avionSprite = ImageIO.read(is);
+                avionSprite.getScaledInstance(150,100, 0);
+
 
             }
 

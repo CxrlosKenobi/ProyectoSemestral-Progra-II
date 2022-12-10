@@ -6,36 +6,76 @@ import javax.swing.*;
 import tarea.app.classes.*;
 
 import java.awt.event.*;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 
 public class SimulationPanel extends JPanel implements ActionListener {
     private Avion avion;
+    private Misil misil;
+    private Objetivo objetivo;
     private Timer timer;
-    private Image sprite;
+    
 
 
     public SimulationPanel() {
+        objetivo = new Objetivo();
         avion = new Avion();
+        misil = new Misil();
         timer = new Timer(1000 / 60, this);
         timer.start();
     }
+    // Double buffer
+    Dimension d; 
+    Image offImage; //es el buffer donde se dibujara (como MiPanel)
+    Graphics offGraphics; // es el pincel que dibujara en offImage
+    Dimension offDimension;
+    public synchronized void update(Graphics g){ 
+        d = getSize();
+        if ( (offGraphics == null)
+           || (d.width != offDimension.width)
+           || (d.height != offDimension.height) ) { //dimensiona para que sea igual a MiPanel
+                offDimension = d;
+                offImage = createImage(d.width, d.height); //crea el objeto doble buffer
+                offGraphics = offImage.getGraphics();      //le asocia el pincel offGraphics 
+       }
+       //Borra las imágenes previas del buffer, no está dibujando en MiPanel:
+       
+       offGraphics.setColor(new Color(0,161,53));
+       offGraphics.fillRect(0, 500, 1280, 720);
+       offGraphics.setColor(new Color(212,244,237));
+       offGraphics.fillRect(0, 0,1280 , 500);
+
+       avion.paint(offGraphics);
+       misil.paint(offGraphics);
+       objetivo.paint(offGraphics);
+
+
+       g.drawImage(offImage, 0, 0, this); //hace el cambio instantáneo de lo dibujado en el buffer a MiPanel
+   }
+
+    //end of Double Buffer
+
+
+
+
+
+
+
+
+
+
     
     @Override
     public void paint(Graphics g){
-        // g.setBackground(Color.BLACK);
-        Graphics2D g2d = (Graphics2D) g;
+        // Graphics2D g2d = (Graphics2D) g;
 
-        // g2d.setBackground(new java.awt.Color(255, 248, 191));
-        // g2d.drawImage(avion.getImage().getScaledInstance(150, 100, 0), 0, 0, null);
-        g2d.setColor(new Color(0,161,53));
-        g2d.fillRect(0, 500, 1280, 720);
-        g2d.setColor(new Color(212,244,237));
-        g2d.fillRect(0, 0,1280 , 500);
+        // g.setColor(new Color(0,161,53));
+        // g.fillRect(0, 500, 1280, 720);
+        // g.setColor(new Color(212,244,237));
+        // g.fillRect(0, 0,1280 , 500);
 
-        avion.paint(g);
-        
-        
+        // avion.paint(g);
+        // misil.paint(g);
+        // objetivo.paint(g);
+        update(g);
     }
 
     @Override
