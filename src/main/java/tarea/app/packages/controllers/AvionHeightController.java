@@ -11,7 +11,7 @@ public class AvionHeightController implements ChangeListener {
   public int MIN_ALT = 0;
 
   public AvionHeightController() {
-    this.slider = new JSlider(JSlider.HORIZONTAL, MIN_ALT, MAX_ALT, 410);
+    this.slider = new JSlider(JSlider.HORIZONTAL, MIN_ALT, MAX_ALT, 0 );
     this.slider.setPreferredSize(new Dimension(200, 50));
     this.slider.setPaintTicks(true);
     this.slider.setPaintTrack(true);
@@ -21,6 +21,7 @@ public class AvionHeightController implements ChangeListener {
     this.slider.setFont(new Font("Helvetica", Font.PLAIN, 10));
     this.slider.setForeground(Color.WHITE);
     this.slider.addChangeListener(this);
+    this.slider.setFocusable(false);
 
     this.label = new JLabel("Altura de vuelo: " + this.slider.getValue() + " m.s.n.m");
     this.label.setFont(new Font("Helvetica", Font.PLAIN, 12));

@@ -14,6 +14,7 @@ public class SimulationScreen extends JFrame {
         setResizable(false);
         setLocationRelativeTo(null);
         setVisible(true);
+        
     }
 
     private void initComponents() {
@@ -47,6 +48,7 @@ public class SimulationScreen extends JFrame {
         avionThrustController.setBounds(20, 150, 200, 100);
 
         GamePanel = new SimulationPanel(avionHeightController, avionThrustController);
+        
         GamePanel.setBackground(new java.awt.Color(255, 248, 191));
         javax.swing.GroupLayout GamePanelLayout = new javax.swing.GroupLayout(GamePanel);
         GamePanel.setLayout(GamePanelLayout);

@@ -14,11 +14,11 @@ public class Avion {
     private BufferedImage avionSprite;
     private boolean positiveDirection;
 
-    public Avion(int y) {
+    public Avion() {
         this.positiveDirection = true;
         this.loadPlaneImage();
         this.x = 0;
-        this.y = (y != 0) ? y : 0;
+        this.y = 0;
         this.velX = 0;
     }
 
@@ -33,8 +33,6 @@ public class Avion {
                 this.y,
                 null);
 
-        if (this.x > 1280)
-            this.x = 0;
 
     }
 
@@ -79,22 +77,19 @@ public class Avion {
         this.y = controlledY;
         this.velX = controlledVelX;
 
-        if(positiveDirection){
+        if (positiveDirection) {
             this.x += this.velX;
-            if(this.x > 1061){
+            if (this.x > 1061) {
                 positiveDirection = false;
                 loadPlaneImage();
             }
-        }else{
+        } else {
             this.x -= this.velX;
-            if(this.x < -170){
+            if (this.x < -170) {
                 positiveDirection = true;
                 loadPlaneImage();
             }
         }
-
-
-
 
     }
 

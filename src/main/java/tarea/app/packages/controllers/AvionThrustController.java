@@ -21,6 +21,7 @@ public class AvionThrustController implements ChangeListener {
     this.slider.setForeground(Color.WHITE);
     this.slider.setFont(new Font("Helvetica", Font.PLAIN, 10));
     this.slider.addChangeListener(this);
+    this.slider.setFocusable(false);
 
     this.label = new JLabel("Fuerza de empuje de avión: " + this.slider.getValue() + "%");
     this.label.setFont(new Font("Helvetica", Font.PLAIN, 12));
@@ -43,6 +44,6 @@ public class AvionThrustController implements ChangeListener {
 
   @Override
   public void stateChanged(ChangeEvent e) {
-    this.label.setText("Fuerza de empuje de avión: " + this.slider.getValue() + "%");
+    this.label.setText("Fuerza de empuje de avión: " + this.getThrust() + "%");
   }
 }
