@@ -2,8 +2,6 @@ package tarea.app.views;
 
 import java.awt.*;
 import javax.swing.*;
-//
-import tarea.app.packages.elements.*;
 import tarea.app.packages.controllers.*;
 
 
