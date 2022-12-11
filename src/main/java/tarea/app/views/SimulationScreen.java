@@ -2,8 +2,6 @@ package tarea.app.views;
 
 import java.awt.*;
 import javax.swing.*;
-//
-import tarea.app.packages.elements.*;
 import tarea.app.packages.controllers.*;
 
 
@@ -14,6 +12,7 @@ public class SimulationScreen extends JFrame {
         setResizable(false);
         setLocationRelativeTo(null);
         setVisible(true);
+        
     }
 
     private void initComponents() {
@@ -47,6 +46,7 @@ public class SimulationScreen extends JFrame {
         avionThrustController.setBounds(20, 150, 200, 100);
 
         GamePanel = new SimulationPanel(avionHeightController, avionThrustController);
+        
         GamePanel.setBackground(new java.awt.Color(255, 248, 191));
         javax.swing.GroupLayout GamePanelLayout = new javax.swing.GroupLayout(GamePanel);
         GamePanel.setLayout(GamePanelLayout);
@@ -78,31 +78,31 @@ public class SimulationScreen extends JFrame {
     }
 
     
-    public static void main(String args[]) {
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SimulationScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SimulationScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SimulationScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SimulationScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+    // public static void main(String args[]) {
+    //     try {
+    //         for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+    //             if ("Nimbus".equals(info.getName())) {
+    //                 javax.swing.UIManager.setLookAndFeel(info.getClassName());
+    //                 break;
+    //             }
+    //         }
+    //     } catch (ClassNotFoundException ex) {
+    //         java.util.logging.Logger.getLogger(SimulationScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    //     } catch (InstantiationException ex) {
+    //         java.util.logging.Logger.getLogger(SimulationScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    //     } catch (IllegalAccessException ex) {
+    //         java.util.logging.Logger.getLogger(SimulationScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    //     } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+    //         java.util.logging.Logger.getLogger(SimulationScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    //     }
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> {
-            SimulationScreen a = new SimulationScreen();
-            a.setLocationRelativeTo(null);
+    //     /* Create and display the form */
+    //     java.awt.EventQueue.invokeLater(() -> {
+    //         SimulationScreen a = new SimulationScreen();
+    //         a.setLocationRelativeTo(null);
 
-        });
-    }
+    //     });
+    // }
     
     // Variables declaration - do not modify                     
     private javax.swing.JPanel ButtonsPanel;
