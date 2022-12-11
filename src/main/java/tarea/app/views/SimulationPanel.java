@@ -28,7 +28,7 @@ public class SimulationPanel extends JPanel implements ActionListener {
         this.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
-                System.out.println("Key pressed: " + e.getKeyCode());
+                objetivo.update(e);
             }
         });
     }
@@ -44,6 +44,8 @@ public class SimulationPanel extends JPanel implements ActionListener {
         g2d.fillRect(0, 500, 1280, 720);
         g2d.setColor(new Color(255, 255, 255)); // sky
         g2d.fillRect(0, 0, 1280, 500);
+
+        
 
         objetivo.paint(g);
         avion.paint(g);
