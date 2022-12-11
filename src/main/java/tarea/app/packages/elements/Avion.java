@@ -4,30 +4,22 @@ import java.awt.*;
 import java.awt.image.*;
 
 import javax.imageio.*;
-import javax.imageio.stream.*;
 
-import javax.swing.*;
 import java.io.*;
 
 public class Avion {
     private int x;
     private int y;
     private double velX;
-    private double angulo;
-    private double velAngulo;
-    private double aceleracion;
-    private double aceleracionAngular;
     private BufferedImage avionSprite;
+    private boolean positiveDirection;
 
     public Avion(int y) {
+        this.positiveDirection = true;
         this.loadPlaneImage();
         this.x = 0;
         this.y = (y != 0) ? y : 0;
-        this.velX = 2;
-        this.angulo = 0;
-        this.velAngulo = 0;
-        this.aceleracion = 0;
-        this.aceleracionAngular = 0;
+        this.velX = 0;
     }
 
     public void paint(Graphics g) {
@@ -36,25 +28,24 @@ public class Avion {
         g2D.drawImage(this.getImage().getScaledInstance(
                 150,
                 100,
-                0
-            ),
-            this.x,
-            this.y,
-            null
-        );
+                0),
+                this.x,
+                this.y,
+                null);
 
-        if (this.x > 1280)  this.x = 0;
+        if (this.x > 1280)
+            this.x = 0;
 
     }
 
     public void loadPlaneImage() {
         try {
-            if (this.velX < 0) {
-                InputStream is = getClass().getResourceAsStream("../sprites/planeLeft.png");
+            if (positiveDirection) {
+                InputStream is = getClass().getResourceAsStream("../sprites/planeRight.png");
                 avionSprite = ImageIO.read(is);
 
             } else {
-                InputStream is = getClass().getResourceAsStream("../sprites/planeRight.png");
+                InputStream is = getClass().getResourceAsStream("../sprites/planeLeft.png");
                 avionSprite = ImageIO.read(is);
 
             }
@@ -86,20 +77,25 @@ public class Avion {
 
     public void update(int controlledY, int controlledVelX) {
         this.y = controlledY;
-        
-        // this.x += this.velX + controlledVelX;
-        this.x += this.velX;
+        this.velX = controlledVelX;
 
-        if (this.x > 1010) {
-            velX = velX * -1;
+        if(positiveDirection){
             this.x += this.velX;
-            loadPlaneImage();
+            if(this.x > 1061){
+                positiveDirection = false;
+                loadPlaneImage();
+            }
+        }else{
+            this.x -= this.velX;
+            if(this.x < -170){
+                positiveDirection = true;
+                loadPlaneImage();
+            }
         }
-        
-        if (this.x <- 150) {
-            velX = velX * -1;
-            this.x += this.velX;
-            loadPlaneImage();
-        }
+
+
+
+
     }
+
 }

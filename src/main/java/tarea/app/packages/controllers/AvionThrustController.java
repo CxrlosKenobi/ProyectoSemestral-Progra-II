@@ -11,7 +11,7 @@ public class AvionThrustController implements ChangeListener {
   public int MIN_THRUST = 0;
 
   public AvionThrustController() {
-    this.slider = new JSlider(JSlider.HORIZONTAL, MIN_THRUST, MAX_THRUST, 1);
+    this.slider = new JSlider(JSlider.HORIZONTAL, MIN_THRUST, MAX_THRUST, 0);
     this.slider.setPreferredSize(new Dimension(200, 50));
     this.slider.setPaintTicks(true);
     this.slider.setPaintTrack(true);

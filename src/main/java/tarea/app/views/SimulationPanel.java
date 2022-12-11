@@ -21,7 +21,6 @@ public class SimulationPanel extends JPanel implements ActionListener {
         this.avion = new Avion(avionHeight);
         this.avionHeightController = avionHeightController;
         this.avionThrustController = avionThrustController;
-
         this.fpsTimer = new Timer(1000 / 60, this);
         this.fpsTimer.start();
     }
