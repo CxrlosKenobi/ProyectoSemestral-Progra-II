@@ -4,7 +4,6 @@ import java.awt.*;
 import java.awt.image.*;
 
 import javax.imageio.*;
-
 import java.io.*;
 
 public class Avion {
@@ -21,7 +20,7 @@ public class Avion {
         this.y = 0;
         this.velX = 0;
     }
-
+    
     public void paint(Graphics g) {
         Graphics2D g2D = (Graphics2D) g;
 
@@ -40,6 +39,7 @@ public class Avion {
             if (positiveDirection) {
                 InputStream is = getClass().getResourceAsStream("../sprites/planeRight.png");
                 avionSprite = ImageIO.read(is);
+                avionSprite.getScaledInstance(1500,100, 0);
 
             } else {
                 InputStream is = getClass().getResourceAsStream("../sprites/planeLeft.png");
