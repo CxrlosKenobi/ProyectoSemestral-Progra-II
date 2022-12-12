@@ -12,10 +12,8 @@ import java.io.IOException;
  */
 
 public class App {
-
     public static void main(String[] args) throws FontFormatException, IOException {
-        // This loads an UI Style for the app
-        try {
+        try { // Loading a cozy UI style for the app
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
@@ -27,10 +25,11 @@ public class App {
             java.util.logging.Logger.getLogger(LoadingScreen.class.getName()).log(java.util.logging.Level.SEVERE, null,
                     ex);
         }
-        Thread t = new Thread(()->{
-            LoadingScreen loadingScreen = new LoadingScreen("Missile Launch System");
-            SimulationScreen simulationScreen = new SimulationScreen();
+        Thread t = new Thread(() -> {
+            new LoadingScreen("Missile Launch System");
+            new SimulationScreen();
         });
+
         t.start();
     }
 }

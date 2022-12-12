@@ -1,32 +1,25 @@
 package tarea.app.views;
-import tarea.app.classes.*;
-import javax.swing.JFrame;
+
 import java.awt.*;
+import javax.swing.*;
+import tarea.app.packages.controllers.*;
+
 
 public class SimulationScreen extends JFrame {
-
     public SimulationScreen() {
         super("Destroy your enemies!");
         initComponents();
         setResizable(false);
         setLocationRelativeTo(null);
         setVisible(true);
-
+        
     }
 
     private void initComponents() {
-        
-
-        // Layout and UI related stuff
-        ButtonsPanel = new javax.swing.JPanel();
-        // GamePanel = new javax.swing.JPanel();
-        GamePanel = new SimulationPanel();
-
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        ButtonsPanel.setBackground(new java.awt.Color(16, 24, 32));
-
+        
+        ButtonsPanel = new javax.swing.JPanel();
+        ButtonsPanel.setBackground(new java.awt.Color(90, 90, 90));
         javax.swing.GroupLayout ButtonsPanelLayout = new javax.swing.GroupLayout(ButtonsPanel);
         ButtonsPanel.setLayout(ButtonsPanelLayout);
         ButtonsPanelLayout.setHorizontalGroup(
@@ -38,8 +31,27 @@ public class SimulationScreen extends JFrame {
             .addGap(0, 720, Short.MAX_VALUE)
         );
 
-        GamePanel.setBackground(new java.awt.Color(255, 248, 191));
+        JLabel title = new JLabel("Controllers");
+        title.setFont(new Font("Helvetica", Font.PLAIN, 20));
+        title.setForeground(Color.WHITE);
+        title.setBounds(20, 20, 200, 30);
+        ButtonsPanel.add(title);
 
+        AvionHeightController avionHeightController = new AvionHeightController();
+        avionHeightController.adhereToPanel(ButtonsPanel);
+        avionHeightController.setBounds(20, 50, 200, 100);
+
+        AvionThrustController avionThrustController = new AvionThrustController();
+        avionThrustController.adhereToPanel(ButtonsPanel);
+        avionThrustController.setBounds(20, 150, 200, 100);
+
+        MissileLauncher missileLauncher = new MissileLauncher();
+        missileLauncher.adhereToPanel(ButtonsPanel);
+        missileLauncher.setBounds(20, 350, 200, 50);
+
+        GamePanel = new SimulationPanel(missileLauncher, avionHeightController, avionThrustController);
+        
+        GamePanel.setBackground(new java.awt.Color(255, 248, 191));
         javax.swing.GroupLayout GamePanelLayout = new javax.swing.GroupLayout(GamePanel);
         GamePanel.setLayout(GamePanelLayout);
         GamePanelLayout.setHorizontalGroup(
@@ -67,49 +79,36 @@ public class SimulationScreen extends JFrame {
         );
 
         pack();
-    }// </editor-fold>                        
-
-                                       
-
-    
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SimulationScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SimulationScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SimulationScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SimulationScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> {
-            SimulationScreen a = new SimulationScreen();
-            a.setLocationRelativeTo(null);
-
-        });
     }
 
     
-    
-    
+    // public static void main(String args[]) {
+    //     try {
+    //         for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+    //             if ("Nimbus".equals(info.getName())) {
+    //                 javax.swing.UIManager.setLookAndFeel(info.getClassName());
+    //                 break;
+    //             }
+    //         }
+    //     } catch (ClassNotFoundException ex) {
+    //         java.util.logging.Logger.getLogger(SimulationScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    //     } catch (InstantiationException ex) {
+    //         java.util.logging.Logger.getLogger(SimulationScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    //     } catch (IllegalAccessException ex) {
+    //         java.util.logging.Logger.getLogger(SimulationScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    //     } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+    //         java.util.logging.Logger.getLogger(SimulationScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    //     }
 
+    //     /* Create and display the form */
+    //     java.awt.EventQueue.invokeLater(() -> {
+    //         SimulationScreen a = new SimulationScreen();
+    //         a.setLocationRelativeTo(null);
+
+    //     });
+    // }
+    
     // Variables declaration - do not modify                     
     private javax.swing.JPanel ButtonsPanel;
     private javax.swing.JPanel GamePanel;
-    // End of variables declaration           
 }
