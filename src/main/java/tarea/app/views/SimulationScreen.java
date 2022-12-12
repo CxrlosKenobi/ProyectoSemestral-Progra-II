@@ -45,7 +45,11 @@ public class SimulationScreen extends JFrame {
         avionThrustController.adhereToPanel(ButtonsPanel);
         avionThrustController.setBounds(20, 150, 200, 100);
 
-        GamePanel = new SimulationPanel(avionHeightController, avionThrustController);
+        MissileLauncher missileLauncher = new MissileLauncher();
+        missileLauncher.adhereToPanel(ButtonsPanel);
+        missileLauncher.setBounds(20, 350, 200, 50);
+
+        GamePanel = new SimulationPanel(missileLauncher, avionHeightController, avionThrustController);
         
         GamePanel.setBackground(new java.awt.Color(255, 248, 191));
         javax.swing.GroupLayout GamePanelLayout = new javax.swing.GroupLayout(GamePanel);

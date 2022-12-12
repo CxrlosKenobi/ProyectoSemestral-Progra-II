@@ -33,10 +33,6 @@ public class Avion {
                 this.y,
                 null
         );
-
-        // Add a border to the plane
-        // g2D.setColor(Color.CYAN);
-        // g2D.drawRect(this.x, this.y, 200, 120);
     }
 
     public void loadPlaneImage() {
@@ -81,13 +77,13 @@ public class Avion {
 
         if (positiveDirection) {
             this.x += this.velX;
-            if (this.x > 1061) {
+            if (this.x >= 1061) {
                 positiveDirection = false;
                 this.loadPlaneImage();
             }
         } else {
             this.x -= this.velX;
-            if (this.x < -200) {
+            if (this.x <= -200) { // -200 is the width of the plane
                 positiveDirection = true;
                 this.loadPlaneImage();
             }

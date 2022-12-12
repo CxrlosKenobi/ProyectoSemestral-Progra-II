@@ -6,6 +6,7 @@ import javax.imageio.*;
 import java.io.*;
 
 public class Misil {
+  private boolean attached;
   private int x;
   private int y;
   private double velX;
@@ -13,6 +14,7 @@ public class Misil {
   private boolean positiveDirection;
 
   public Misil() {
+    this.attached = true;
     this.positiveDirection = true;
     this.loadMissileImage();
     this.x = 45;
@@ -24,17 +26,13 @@ public class Misil {
     Graphics2D g2D = (Graphics2D) g;
 
     g2D.drawImage(this.getImage().getScaledInstance(
-        110,
-        30,
-        0),
+      110,
+      30,
+      0),
       this.x,
       this.y,
       null
     );
-
-    // Add a border to the plane
-    // g2D.setColor(Color.BLACK);
-    // g2D.drawRect(this.x, this.y, 110, 20);
   }
 
   public void loadMissileImage() {
@@ -73,25 +71,38 @@ public class Misil {
     this.y = y;
   }
 
-  public void update(int controlledY, int controlledVelX) {
-    this.y = controlledY + 45;
-    this.velX = controlledVelX;
+  public void setAttached(boolean attached) {
+    this.attached = attached;
+  }
+    
+  public void update(boolean isAttached, int controlledY, int controlledVelX) {
+    this.attached = isAttached;
 
-    if (positiveDirection) {
-      this.x += this.velX;
+    if (this.attached) {
+      this.y = controlledY + 45;
+      this.velX = controlledVelX;
 
-      if (this.x > 1061) {
-        positiveDirection = false;
-        this.loadMissileImage();
+      if (positiveDirection) {
+        this.x += this.velX;
+        if (this.x >= 1061) {
+          positiveDirection = false;
+          this.loadMissileImage();
+        }
+      
+      } else {
+        this.x -= this.velX;
+  
+        if (this.x <= -200) {
+          positiveDirection = true;
+          this.loadMissileImage();
+        }
       }
     
     } else {
-      this.x -= this.velX;
+      // Start physics animation of the missile falling by gravity
+      this.y += 10;
 
-      if (this.x < -30) {
-        positiveDirection = true;
-        this.loadMissileImage();
-      }
+
     }
   }
 }

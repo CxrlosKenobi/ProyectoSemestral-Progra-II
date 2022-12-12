@@ -9,28 +9,28 @@ import tarea.app.packages.controllers.*;
 
 public class SimulationPanel extends JPanel implements ActionListener {
     private Avion avion;
-    private Misil misil;
-    private Objetivo objetivo;
     private AvionHeightController avionHeightController;
     private AvionThrustController avionThrustController;
+    private Misil misil;
+    private MissileLauncher missileLauncher;
+    private Objetivo objetivo;
     private Timer fpsTimer;
 
-    public SimulationPanel(AvionHeightController avionHeightController, AvionThrustController avionThrustController) {
+    public SimulationPanel(
+        MissileLauncher missileController,
+        AvionHeightController avionHeightController,
+        AvionThrustController avionThrustController
+    ) {
         this.avion = new Avion();
-        this.misil = new Misil();
-        this.objetivo = new Objetivo();
         this.avionHeightController = avionHeightController;
         this.avionThrustController = avionThrustController;
+        this.misil = new Misil();
+        this.missileLauncher = missileController;
+        this.objetivo = new Objetivo();
         this.fpsTimer = new Timer(1000 / 60, this);
         this.fpsTimer.start();
         this.setFocusable(isFocusable());
         this.requestFocus();
-        this.addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyPressed(KeyEvent e) {
-                objetivo.update(e);
-            }
-        });
     }
 
     @Override
@@ -50,7 +50,7 @@ public class SimulationPanel extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         avion.update(avionHeightController.getAltitude(), avionThrustController.getThrust());
-        misil.update(avionHeightController.getAltitude(), avionThrustController.getThrust());
+        misil.update(missileLauncher.getStatus(), avionHeightController.getAltitude(), avionThrustController.getThrust());
         objetivo.update();
         repaint();
     }
