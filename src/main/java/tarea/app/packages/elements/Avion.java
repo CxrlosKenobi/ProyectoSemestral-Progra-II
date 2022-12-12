@@ -26,14 +26,17 @@ public class Avion {
         Graphics2D g2D = (Graphics2D) g;
 
         g2D.drawImage(this.getImage().getScaledInstance(
-                150,
-                100,
+                200,
+                120,
                 0),
                 this.x,
                 this.y,
-                null);
+                null
+        );
 
-
+        // Add a border to the plane
+        // g2D.setColor(Color.CYAN);
+        // g2D.drawRect(this.x, this.y, 200, 120);
     }
 
     public void loadPlaneImage() {
@@ -45,7 +48,6 @@ public class Avion {
             } else {
                 InputStream is = getClass().getResourceAsStream("../sprites/planeLeft.png");
                 avionSprite = ImageIO.read(is);
-
             }
 
         } catch (IOException e) {
@@ -54,7 +56,7 @@ public class Avion {
     }
 
     public Image getImage() {
-        return avionSprite;
+        return this.avionSprite;
     }
 
     public int getX() {
@@ -81,16 +83,14 @@ public class Avion {
             this.x += this.velX;
             if (this.x > 1061) {
                 positiveDirection = false;
-                loadPlaneImage();
+                this.loadPlaneImage();
             }
         } else {
             this.x -= this.velX;
-            if (this.x < -170) {
+            if (this.x < -200) {
                 positiveDirection = true;
-                loadPlaneImage();
+                this.loadPlaneImage();
             }
         }
-
     }
-
 }
