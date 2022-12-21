@@ -5,6 +5,7 @@ import java.awt.image.*;
 import javax.imageio.*;
 
 import java.io.*;
+import java.util.ArrayList;
 
 public class Avion {
     private int x;
@@ -12,7 +13,7 @@ public class Avion {
     private double velX;
     private BufferedImage avionSprite;
     private boolean positiveDirection;
-    private Misil[] misiles;
+    private ArrayList<Misil> misiles = new ArrayList<Misil>();
 
     public Avion() {
         this.positiveDirection = true;
@@ -33,14 +34,18 @@ public class Avion {
                 this.x,
                 this.y,
                 null);
-
-        // for (Misil misil : misiles) {
-        // }
+        if(!misiles.isEmpty()) {
+            for (Misil misil : misiles) {
+                misil.paint(g);
+            }
+        }
 
     }
 
     public void missileLaunch() {
         System.out.println("Lanzando misil");
+        misiles.add(new Misil());
+        System.out.println("Misiles: " + misiles);
     }
 
     public void loadPlaneImage() {
