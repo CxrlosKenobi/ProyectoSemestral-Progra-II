@@ -14,8 +14,10 @@ public class Avion {
     private BufferedImage avionSprite;
     private boolean positiveDirection;
     private ArrayList<Misil> misiles = new ArrayList<Misil>();
+    private Objetivo objetivo;
 
-    public Avion() {
+    public Avion(Objetivo objetivo) {
+        this.objetivo = objetivo;
         this.positiveDirection = true;
         this.loadPlaneImage();
         this.x = 0;
@@ -32,11 +34,20 @@ public class Avion {
                 100,
                 0),
                 this.x,
-                this.y,
+                this.y, 
                 null);
         if(!misiles.isEmpty()) {
-            for (Misil misil : misiles) {
-                misil.paint(g);
+            for (int i = 0; i < misiles.size(); i++) {
+                try{
+                    misiles.get(i).update();
+                    misiles.get(i).paint(g);
+                    if(misiles.get(i).getY() > 720){
+                        misiles.remove(i);
+                    }
+                }catch(Exception e){
+                    System.out.println("Se ha borrado un misil");
+                }
+                
             }
         }
 
@@ -44,8 +55,8 @@ public class Avion {
 
     public void missileLaunch() {
         System.out.println("Lanzando misil");
-        misiles.add(new Misil());
-        System.out.println("Misiles: " + misiles);
+        misiles.add(new Misil(this, objetivo, this.positiveDirection));
+        System.out.println("Misiles: " + misiles.size());
     }
 
     public void loadPlaneImage() {
@@ -64,9 +75,16 @@ public class Avion {
             e.printStackTrace();
         }
     }
+    public boolean getPossitiveDirection(){
+        return this.positiveDirection;
+    }
 
     public Image getImage() {
         return avionSprite;
+    }
+
+    public double getVelX() {
+        return this.velX;
     }
 
     public int getX() {

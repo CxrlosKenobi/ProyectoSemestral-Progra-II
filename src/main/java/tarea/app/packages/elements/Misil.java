@@ -14,11 +14,17 @@ public class Misil {
     private double angle;
     private double velAngle;
     private double gravity;
+    private boolean positiveDirection;
     private BufferedImage misilSprite;
+    private Avion avion;
+    private Objetivo objetivo;
 
-    public Misil() {
-        this.x = 0;
-        this.y = 0;
+    public Misil(Avion avion, Objetivo objetivo, Boolean positiveDirection) {
+        this.positiveDirection = positiveDirection;
+        this.objetivo = objetivo;
+        this.avion = avion;
+        this.x = avion.getX();
+        this.y = avion.getY();
         this.velX = 0;
         this.velY = 0;
         this.angle = 0;
@@ -30,24 +36,31 @@ public class Misil {
 
     public void paint(Graphics g){
         Graphics2D g2D = (Graphics2D) g;
+        g2D.rotate(angle, this.x, this.y);
+        g2D.drawImage(this.getImage(), this.x, this.y, null);
 
-        g2D.drawImage(this.getImage().getScaledInstance(
-                150,
-                100,
-                0),
-                this.x,
-                this.y,
-                null);
-
+    }
+    public void update(){
+        if(positiveDirection == true){
+            this.x += this.velX;
+        }else{
+            this.x -= this.velX;
+        }
+        this.y += this.gravity;
     }
 
 
 
     public void loadMissilImage() {
         try{
-            InputStream is = getClass().getResourceAsStream("../sprites/planeRight.png");
-            misilSprite = ImageIO.read(is);
-
+            this.velX = avion.getVelX();
+            if(avion.getPossitiveDirection()){
+                InputStream is = getClass().getResourceAsStream("../sprites/misilRight.png");
+                misilSprite = ImageIO.read(is);
+            }else{
+                InputStream is = getClass().getResourceAsStream("../sprites/misilLeft.png");
+                misilSprite = ImageIO.read(is);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }

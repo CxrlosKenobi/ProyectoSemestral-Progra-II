@@ -1,9 +1,11 @@
 package tarea.app.views;
 
 import java.awt.*;
+
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import tarea.app.packages.controllers.*;
-
+import java.io.*;
 
 public class SimulationScreen extends JFrame {
     public SimulationScreen() {
@@ -16,6 +18,17 @@ public class SimulationScreen extends JFrame {
     }
 
     private void initComponents() {
+        try{
+            icon = new ImageIcon(ImageIO.read(getClass().getResourceAsStream("assets/icons/icon.png")));            
+        }catch(Exception e){
+            System.out.println("Icon not found");
+        }
+
+        
+        setIconImage(icon.getImage());
+
+
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         
         ButtonsPanel = new javax.swing.JPanel();
@@ -85,7 +98,8 @@ public class SimulationScreen extends JFrame {
     
    
     
-    // Variables declaration - do not modify                     
+    // Variables declaration - do not modify      
+    private ImageIcon icon;               
     private javax.swing.JPanel ButtonsPanel;
     private javax.swing.JPanel GamePanel;
 }
