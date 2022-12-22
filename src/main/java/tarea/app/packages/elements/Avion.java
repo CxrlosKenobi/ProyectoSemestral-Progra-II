@@ -23,7 +23,6 @@ public class Avion {
         this.x = 0;
         this.y = 0;
         this.velX = 0;
-
     }
 
     public void paint(Graphics g) {
@@ -34,8 +33,10 @@ public class Avion {
                 100,
                 0),
                 this.x,
-                this.y, 
-                null);
+                this.y,
+                null
+        );
+        
         if(!misiles.isEmpty()) {
             for (int i = 0; i < misiles.size(); i++) {
                 try{
@@ -44,13 +45,12 @@ public class Avion {
                     if(misiles.get(i).getY() > 720){
                         misiles.remove(i);
                     }
+
                 }catch(Exception e){
                     System.out.println("Se ha borrado un misil");
                 }
-                
             }
         }
-
     }
 
     public void missileLaunch() {
@@ -122,5 +122,4 @@ public class Avion {
         }
 
     }
-
 }

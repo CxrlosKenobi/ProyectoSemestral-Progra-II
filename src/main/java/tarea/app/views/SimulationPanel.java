@@ -46,10 +46,11 @@ public class SimulationPanel extends JPanel implements ActionListener {
         g2d.setColor(new Color(255, 255, 255)); // sky
         g2d.fillRect(0, 0, 1280, 500);
 
-        
+        // Check here if any of the missiles has hit the target by comparing the coordinates of the missile and the target. If so, log a message to the console.
 
         objetivo.paint(g);
         avion.paint(g);
+
     }
 
     @Override
@@ -58,7 +59,4 @@ public class SimulationPanel extends JPanel implements ActionListener {
         objetivo.update();
         repaint();
     }
-
-    
-
 }

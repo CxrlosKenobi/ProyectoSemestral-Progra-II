@@ -11,6 +11,7 @@ public class Objetivo {
     private int x;
     private int y;
     private int velX;
+    private boolean struck;
     private BufferedImage targetSprite;
     private boolean positiveDirection;
     
@@ -45,11 +46,11 @@ public class Objetivo {
     public void paint(Graphics g) {
         Graphics2D g2D = (Graphics2D) g;
         g2D.drawImage(this.getImage(), this.x, this.y, null);
-
     }
 
     public void update() {
-        this.x += this.velX;
+        if (!struck) this.x += this.velX;
+
         if( this.x > 1011 || this.x < -100){
             this.velX = this.velX * -1;
             this.positiveDirection = !this.positiveDirection;
@@ -77,4 +78,15 @@ public class Objetivo {
         return targetSprite;
     }
 
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setStruck(boolean value) {
+        this.struck = value;
+    }
 }

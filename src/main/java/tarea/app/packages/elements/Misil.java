@@ -9,6 +9,8 @@ import javax.imageio.ImageIO;
 public class Misil {
     private int x;
     private int y;
+    private int width;
+    private int height;
     private double velX;
     private double velY;
     private double angle;
@@ -25,6 +27,8 @@ public class Misil {
         this.avion = avion;
         this.x = avion.getX();
         this.y = avion.getY();
+        this.width = 72;
+        this.height = 33;
         this.velX = 0;
         this.velY = 0;
         this.angle = 0;
@@ -34,13 +38,28 @@ public class Misil {
     }
 
 
-    public void paint(Graphics g){
+    public void paint(Graphics g) {
         Graphics2D g2D = (Graphics2D) g;
         g2D.rotate(angle, this.x, this.y);
-        g2D.drawImage(this.getImage(), this.x, this.y, null);
-
+        g2D.drawImage(this.getImage().getScaledInstance(
+            this.width,
+            this.height,
+            0),
+            this.x,
+            this.y,
+            null
+        );
     }
     public void update(){
+        if (this.hasCollidedWithTarget(objetivo)) {
+            objetivo.setStruck(true);
+            // Stop as well the missile from moving
+            this.velX = 0;
+            this.velY = 0;
+            this.gravity = 0;
+
+        }
+
         if(positiveDirection == true){
             this.x += this.velX;
         }else{
@@ -49,7 +68,21 @@ public class Misil {
         this.y += this.gravity;
     }
 
+    public boolean hasCollidedWithTarget(Objetivo target) {
+        Rectangle missileRect = new Rectangle(
+            this.x, this.y,
+            this.width - 10,
+            this.height - 10
+        );
 
+        Rectangle targetRect = new Rectangle(
+            target.getX(), target.getY(),
+            target.getImage().getWidth() - 5,
+            target.getImage().getHeight() - 5
+        );
+
+        return missileRect.intersects(targetRect);
+    }
 
     public void loadMissilImage() {
         try{
@@ -126,5 +159,4 @@ public class Misil {
     public BufferedImage getImage() {
         return misilSprite;
     }
-
 }
