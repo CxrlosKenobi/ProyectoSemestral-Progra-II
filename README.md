@@ -47,3 +47,15 @@ En el panel central habrá un escenario compuesto por avión, blanco y misil, en
 - El blanco, por defecto se mueve a la misma altura randómicamente elegida. Se podría cambiar la dirección del blanco mediante flechas del teclado. 
 
 - El control de disparo se debe realizar mediante el mouse o con teclado o con controles GUI.
+
+
+# Capturas de pantalla del proyecto
+![](/assetsReadme/loadingScreen.png)
+
+![](/assetsReadme/inGame.png)
+
+# Autocritica
+
+  + Considero que se pueden crear mejores animaciones, pero mi inexperiencia en el tema me impide hacerlo.
+  + El proyecto no tiene un diseño muy atractivo, pero es funcional.
+  + La manera de vincular los objetos no es la mejor, pero es la que encontré para hacerlo funcionar.

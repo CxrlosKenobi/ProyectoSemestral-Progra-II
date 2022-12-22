@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.image.*;
 import javax.imageio.*;
 import java.io.*;
+import java.util.ArrayList;
 
 public class Avion {
     private int x;
@@ -11,15 +12,16 @@ public class Avion {
     private double velX;
     private BufferedImage avionSprite;
     private boolean positiveDirection;
-    private Misil[] misiles;
+    private ArrayList<Misil> misiles = new ArrayList<Misil>();
+    private Objetivo objetivo;
 
-    public Avion() {
+    public Avion(Objetivo objetivo) {
+        this.objetivo = objetivo;
         this.positiveDirection = true;
         this.loadPlaneImage();
         this.x = 0;
         this.y = 0;
         this.velX = 0;
-
     }
     
     public void paint(Graphics g) {
@@ -31,15 +33,29 @@ public class Avion {
                 0),
                 this.x,
                 this.y,
-                null);
+                null
+        );
+        
+        if(!misiles.isEmpty()) {
+            for (int i = 0; i < misiles.size(); i++) {
+                try{
+                    misiles.get(i).update();
+                    misiles.get(i).paint(g);
+                    if(misiles.get(i).getY() > 720){
+                        misiles.remove(i);
+                    }
 
-        // for (Misil misil : misiles) {
-        // }
-
+                }catch(Exception e){
+                    System.out.println("Se ha borrado un misil");
+                }
+            }
+        }
     }
 
     public void missileLaunch() {
         System.out.println("Lanzando misil");
+        misiles.add(new Misil(this, objetivo, this.positiveDirection));
+        System.out.println("Misiles: " + misiles.size());
     }
 
     public void loadPlaneImage() {
@@ -58,9 +74,16 @@ public class Avion {
             e.printStackTrace();
         }
     }
+    public boolean getPossitiveDirection(){
+        return this.positiveDirection;
+    }
 
     public Image getImage() {
         return this.avionSprite;
+    }
+
+    public double getVelX() {
+        return this.velX;
     }
 
     public int getX() {
