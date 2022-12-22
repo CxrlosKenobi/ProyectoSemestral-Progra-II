@@ -1,6 +1,7 @@
 package tarea.app.views;
 import java.awt.*;
 import java.io.InputStream;
+
 public class LoadingScreen extends javax.swing.JFrame {
     private Font cFont = loadFuentePersonalizada("miPoster.ttf",0 , 50);
     
@@ -12,7 +13,6 @@ public class LoadingScreen extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
         playApp();
-
     }
 
     private Font loadFuentePersonalizada(String fontName, int style, int size) {
@@ -28,12 +28,6 @@ public class LoadingScreen extends javax.swing.JFrame {
     }
    
     private void initComponents() {
-        //Make a new custom font
-        
-       
-
-        
-
         LoadingScreen = new javax.swing.JPanel();
         ProgramTitle = new javax.swing.JLabel();
         LoadingBar = new javax.swing.JProgressBar();

@@ -2,15 +2,27 @@
 
 > ([Informática UdeC](https://fi.udec.cl/pregrado/ingenieria-civil-informatica/) 2022-2)
 
-### Integrantes
+### Grupo 21
 - [Sebastián Benjamín Bustos Beni](https://github.com/sebasinmas)
 - [Carlos Efraín Pinto Urtubia](https://github.com/CxrlosKenobi)
 
 ---
 
-## Enunciado
-
 > Tema: Animación de la física de lanzamiento de misiles desde un avión
+
+> *captura de la interfaz gráfica*
+
+### Diagrama UML
+
+### Diagrama de casos de uso
+
+### Patrones de diseño de software
+
+
+*breve sección que explica las decisiones que tomamos durante el proyecto*
+*breve sección que indica los problemas que tuvimos durante el proyecto y autoevaluación de los mismos*
+
+---
 
 En el panel central habrá un escenario compuesto por avión, blanco y misil, en una animación.
 
