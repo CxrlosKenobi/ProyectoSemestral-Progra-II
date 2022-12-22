@@ -32,8 +32,9 @@
 
 ![](assets/DiagramaUso.png)
 
+### GitFlow (extracto)
 
-
+![](assets/GitLens.png)
 
 
 ## Decisiones de diseño  
@@ -50,4 +51,4 @@ Usamos también el principio de **separación de responsabilidades**, ya que cad
 
 ### Conclusiones
 - Consideramos que se pueden crear mejores animaciones, y vincular mejor los objetos, sin embargo nuestra inexperiencia en el tema nos impidió hacerlo en el tiempo que teníamos. También hubo problemas con la física dinámica, ya que no pudimos implementarla de la mejor manera, pero logramos hacerla funcionar.
-- De todos modos logramos establecer un flujo de trabajo que nos permitió trabajar de manera paralela en distintas branches y luego unirlas en una sola branch principal mediante Pull Requests.
+- De todos modos logramos establecer un flujo de trabajo que nos permitió trabajar de manera paralela en distintas branches y luego unirlas en una sola branch principal mediante Pull Requests, tal como demostramos en gráfico de commits.
