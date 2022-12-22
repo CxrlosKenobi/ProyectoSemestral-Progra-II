@@ -2,7 +2,6 @@ package tarea.app.packages.elements;
 
 import java.awt.*;
 import java.awt.image.*;
-
 import javax.imageio.*;
 import java.io.*;
 
@@ -12,6 +11,7 @@ public class Avion {
     private double velX;
     private BufferedImage avionSprite;
     private boolean positiveDirection;
+    private Misil[] misiles;
 
     public Avion() {
         this.positiveDirection = true;
@@ -19,6 +19,7 @@ public class Avion {
         this.x = 0;
         this.y = 0;
         this.velX = 0;
+
     }
     
     public void paint(Graphics g) {
@@ -30,8 +31,15 @@ public class Avion {
                 0),
                 this.x,
                 this.y,
-                null
-        );
+                null);
+
+        // for (Misil misil : misiles) {
+        // }
+
+    }
+
+    public void missileLaunch() {
+        System.out.println("Lanzando misil");
     }
 
     public void loadPlaneImage() {

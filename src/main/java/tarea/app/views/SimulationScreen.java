@@ -1,9 +1,11 @@
 package tarea.app.views;
 
 import java.awt.*;
+
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import tarea.app.packages.controllers.*;
-
+import java.io.*;
 
 public class SimulationScreen extends JFrame {
     public SimulationScreen() {
@@ -16,6 +18,17 @@ public class SimulationScreen extends JFrame {
     }
 
     private void initComponents() {
+        try{
+            icon = new ImageIcon(ImageIO.read(getClass().getResourceAsStream("assets/icons/icon.png")));            
+        }catch(Exception e){
+            System.out.println("Icon not found");
+        }
+
+        
+        setIconImage(icon.getImage());
+
+
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         
         ButtonsPanel = new javax.swing.JPanel();
@@ -45,11 +58,12 @@ public class SimulationScreen extends JFrame {
         avionThrustController.adhereToPanel(ButtonsPanel);
         avionThrustController.setBounds(20, 150, 200, 100);
 
-        MissileLauncher missileLauncher = new MissileLauncher();
-        missileLauncher.adhereToPanel(ButtonsPanel);
-        missileLauncher.setBounds(20, 350, 200, 50);
+        MisilController misilController = new MisilController();
+        misilController.adhereToPanel(ButtonsPanel);
+        misilController.setBounds(20, 350, 200, 100);
 
-        GamePanel = new SimulationPanel(missileLauncher, avionHeightController, avionThrustController);
+
+        GamePanel = new SimulationPanel(avionHeightController, avionThrustController, misilController);
         
         GamePanel.setBackground(new java.awt.Color(255, 248, 191));
         javax.swing.GroupLayout GamePanelLayout = new javax.swing.GroupLayout(GamePanel);
@@ -82,33 +96,10 @@ public class SimulationScreen extends JFrame {
     }
 
     
-    // public static void main(String args[]) {
-    //     try {
-    //         for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-    //             if ("Nimbus".equals(info.getName())) {
-    //                 javax.swing.UIManager.setLookAndFeel(info.getClassName());
-    //                 break;
-    //             }
-    //         }
-    //     } catch (ClassNotFoundException ex) {
-    //         java.util.logging.Logger.getLogger(SimulationScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-    //     } catch (InstantiationException ex) {
-    //         java.util.logging.Logger.getLogger(SimulationScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-    //     } catch (IllegalAccessException ex) {
-    //         java.util.logging.Logger.getLogger(SimulationScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-    //     } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-    //         java.util.logging.Logger.getLogger(SimulationScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-    //     }
-
-    //     /* Create and display the form */
-    //     java.awt.EventQueue.invokeLater(() -> {
-    //         SimulationScreen a = new SimulationScreen();
-    //         a.setLocationRelativeTo(null);
-
-    //     });
-    // }
+   
     
-    // Variables declaration - do not modify                     
+    // Variables declaration - do not modify      
+    private ImageIcon icon;               
     private javax.swing.JPanel ButtonsPanel;
     private javax.swing.JPanel GamePanel;
 }

@@ -1,13 +1,9 @@
 package tarea.app.views;
 import java.awt.*;
-import javax.swing.*;
 import java.io.InputStream;
 
 public class LoadingScreen extends javax.swing.JFrame {
     private Font cFont = loadFuentePersonalizada("miPoster.ttf",0 , 50);
-    private Image avion;
-    private Image misil;
-    private Image objetivo;
     
     public LoadingScreen(String name) {
         super(name);
@@ -102,7 +98,7 @@ public class LoadingScreen extends javax.swing.JFrame {
     private void playApp() {
         try {
             for (int i = 0; i <= 100; i++) {
-                Thread.sleep(50);
+                Thread.sleep(25);
                 switch (i) {
                     case (10) -> {
                         this.jLabel1.setText("Loading trigonometry...");
