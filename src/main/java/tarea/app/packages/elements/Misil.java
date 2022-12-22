@@ -2,6 +2,7 @@ package tarea.app.packages.elements;
 
 import java.awt.*;
 import java.awt.image.*;
+
 public class Misil {
     private int x;
     private int y;
@@ -69,5 +70,4 @@ public class Misil {
     public void setGravity(double gravity) {
         this.gravity = gravity;
     }
-
 }

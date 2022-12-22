@@ -3,7 +3,6 @@ package tarea.app.packages.elements;
 import java.awt.*;
 import java.awt.image.*;
 import javax.imageio.*;
-
 import java.io.*;
 
 public class Avion {
@@ -22,13 +21,13 @@ public class Avion {
         this.velX = 0;
 
     }
-
+    
     public void paint(Graphics g) {
         Graphics2D g2D = (Graphics2D) g;
 
         g2D.drawImage(this.getImage().getScaledInstance(
-                150,
-                100,
+                200,
+                120,
                 0),
                 this.x,
                 this.y,
@@ -48,11 +47,11 @@ public class Avion {
             if (positiveDirection) {
                 InputStream is = getClass().getResourceAsStream("../sprites/planeRight.png");
                 avionSprite = ImageIO.read(is);
+                avionSprite.getScaledInstance(1500,100, 0);
 
             } else {
                 InputStream is = getClass().getResourceAsStream("../sprites/planeLeft.png");
                 avionSprite = ImageIO.read(is);
-
             }
 
         } catch (IOException e) {
@@ -61,7 +60,7 @@ public class Avion {
     }
 
     public Image getImage() {
-        return avionSprite;
+        return this.avionSprite;
     }
 
     public int getX() {
@@ -86,18 +85,16 @@ public class Avion {
 
         if (positiveDirection) {
             this.x += this.velX;
-            if (this.x > 1061) {
+            if (this.x >= 1061) {
                 positiveDirection = false;
-                loadPlaneImage();
+                this.loadPlaneImage();
             }
         } else {
             this.x -= this.velX;
-            if (this.x < -170) {
+            if (this.x <= -200) { // -200 is the width of the plane
                 positiveDirection = true;
-                loadPlaneImage();
+                this.loadPlaneImage();
             }
         }
-
     }
-
 }

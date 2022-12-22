@@ -16,8 +16,8 @@ public class SimulationPanel extends JPanel implements ActionListener {
     private Timer fpsTimer;
 
     public SimulationPanel(AvionHeightController avionHeightController, AvionThrustController avionThrustController, MisilController misilController) {
-        this.avion = new Avion();
         this.objetivo = new Objetivo();
+        this.avion = new Avion(this.objetivo);
         this.avionHeightController = avionHeightController;
         this.avionThrustController = avionThrustController;
         this.fpsTimer = new Timer(1000 / 60, this);
@@ -46,10 +46,9 @@ public class SimulationPanel extends JPanel implements ActionListener {
         g2d.setColor(new Color(255, 255, 255)); // sky
         g2d.fillRect(0, 0, 1280, 500);
 
-        
-
         objetivo.paint(g);
         avion.paint(g);
+
     }
 
     @Override
@@ -58,7 +57,4 @@ public class SimulationPanel extends JPanel implements ActionListener {
         objetivo.update();
         repaint();
     }
-
-    
-
 }
